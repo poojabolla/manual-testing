@@ -1,16 +1,16 @@
 name: Manual Approval Test
 
 on:
-  workflow_dispatch: # Allows you to manually trigger the workflow from the GitHub UI
+  workflow_dispatch:
 
 jobs:
   manual-approval:
     name: Test Manual Approval
     runs-on: ubuntu-latest
-    
+
     permissions:
-      issues: write
-      
+      issues: write # Required for creating and interacting with issues
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -18,8 +18,9 @@ jobs:
       - name: Run Manual Approval Action
         uses: trstringer/manual-approval@v1
         with:
-          approvers: 'poojabolla' # Replace with GitHub usernames of approvers
+          approvers: 'user1,user2' # Replace with GitHub usernames of approvers
           issue-title: 'Manual Approval Test'
           issue-body: 'This is a test for the manual approval action.'
           minimum-approvals: 1
           polling-interval-seconds: 30
+          secret: ${{ secrets.INPUT_SECRET }} # Pass the INPUT_SECRET here
