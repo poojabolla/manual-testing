@@ -23,4 +23,5 @@ jobs:
           issue-body: 'This is a test for the manual approval action.'
           minimum-approvals: 1
           polling-interval-seconds: 30
-          secret: ${{ secrets.INPUT_SECRET }} # Pass the INPUT_SECRET here
+        env:
+          INPUT_SECRET: ${{ secrets.GITHUB_TOKEN }} # Use the default GITHUB_TOKEN
