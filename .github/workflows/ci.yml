@@ -7,7 +7,10 @@ jobs:
   manual-approval:
     name: Test Manual Approval
     runs-on: ubuntu-latest
-
+    
+    permissions:
+      issues: write
+      
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
